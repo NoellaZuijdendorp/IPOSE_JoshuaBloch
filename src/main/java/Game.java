@@ -27,7 +27,7 @@ public class Game extends GameApplication {
     protected void initGame(){
         player = FXGL.entityBuilder()
                 .at(400,400)
-                .view(new Rectangle(400,400, Color.BLUE))
+                .viewWithBBox("")
                 .scale(0.05, 0.05)
                 .with(new CollidableComponent(true))
                 .type(EntityTypes.PLAYER)

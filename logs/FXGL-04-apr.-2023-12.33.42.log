@@ -33,14 +33,14 @@ Scene Factory: class com.almasb.fxgl.app.scene.SceneFactory
 12:33:38.771 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Scene size: 800.0 x 800.0
 12:33:38.771 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Stage size: 814.4000244140625 x 837.5999755859375
 12:33:38.782 [FXGL Background Thread 1 ] DEBUG Engine               - Initializing environment variables
-12:33:38.832 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - User app class for loading assets: class Game
+12:33:38.832 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - User app class for loading assets: class main.Game
 12:33:38.832 [FXGL Background Thread 1 ] DEBUG GameApplicationServi - Applying CSS: fxgl_dark.css
 12:33:38.833 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/C:/Users/samvd/.m2/repository/com/github/almasb/fxgl/17.1/fxgl-17.1.jar!/fxglassets/ui/css/fxgl_dark.css
 12:33:38.879 [FXGL Background Thread 1 ] DEBUG GameApplicationServi - Initializing application scenes
-12:33:38.915 [FXGL Background Thread 1 ] DEBUG GameWorld            - Game world initialized
+12:33:38.915 [FXGL Background Thread 1 ] DEBUG GameWorld            - main.Game world initialized
 12:33:38.982 [FXGL Background Thread 1 ] DEBUG PhysicsWorld         - Physics world initialized: appHeight=800, physics.ppm=50,0
 12:33:38.983 [FXGL Background Thread 1 ] DEBUG PhysicsWorld         - Using strategy: BRUTE_FORCE
-12:33:38.987 [FXGL Background Thread 1 ] DEBUG GameScene            - Game scene initialized: 800x800
+12:33:38.987 [FXGL Background Thread 1 ] DEBUG GameScene            - main.Game scene initialized: 800x800
 12:33:39.001 [FXGL Background Thread 1 ] DEBUG FXGL.DefaultMenu     - createMenuBodyGameMenu()
 12:33:39.020 [FXGL Background Thread 1 ] DEBUG FXGL.DefaultMenu     - createOptionsMenu()
 12:33:39.031 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/C:/Users/samvd/.m2/repository/com/github/almasb/fxgl/17.1/fxgl-17.1.jar!/fxglassets/textures/particles/smoke.png
@@ -74,7 +74,7 @@ Scene Factory: class com.almasb.fxgl.app.scene.SceneFactory
 12:33:39.272 [JavaFX Application Thread] DEBUG GameWorld            - Clearing game world
 12:33:39.272 [JavaFX Application Thread] DEBUG PhysicsWorld         - Clearing physics world
 12:33:39.274 [FXGL Background Thread 1 ] DEBUG FXGLApplication      - Initializing game
-12:33:39.293 [FXGL Background Thread 1 ] INFO  FXGLApplication      - Game initialization took: 0,019 sec
+12:33:39.293 [FXGL Background Thread 1 ] INFO  FXGLApplication      - main.Game initialization took: 0,019 sec
 12:33:39.309 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/C:/Users/samvd/.m2/repository/com/github/almasb/fxgl/17.1/fxgl-17.1.jar!/fxglassets/ui/fonts/Abel-Regular.ttf
 12:33:39.314 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
 12:33:39.319 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from FXGLLoadingScene and adding to GameScene
@@ -173,7 +173,7 @@ Scene Factory: class com.almasb.fxgl.app.scene.SceneFactory
 12:33:42.201 [FXGL Background Thread 3 ] DEBUG Engine               - urlGithub: https://github.com/AlmasB/FXGL
 12:33:42.202 [FXGL Background Thread 3 ] DEBUG Engine               - urlLeaderboard: http://fxgl-top.herokuapp.com/
 12:33:42.202 [FXGL Background Thread 3 ] DEBUG Engine               - urlPOM: https://raw.githubusercontent.com/AlmasB/FXGL/release/README.md
-12:33:42.202 [FXGL Background Thread 3 ] DEBUG Engine               - userAppClass: class Game
+12:33:42.202 [FXGL Background Thread 3 ] DEBUG Engine               - userAppClass: class main.Game
 12:33:42.202 [FXGL Background Thread 3 ] DEBUG Engine               - version: 1.0
 12:33:42.202 [FXGL Background Thread 3 ] DEBUG Engine               - versionCheckDays: 7
 12:33:42.202 [FXGL Background Thread 3 ] DEBUG Engine               - width: 800
