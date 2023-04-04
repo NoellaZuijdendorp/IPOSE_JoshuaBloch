@@ -19,6 +19,8 @@ public class Game extends GameApplication {
     private final String gameVersion = "1.0";
     private Entity player;
     private Player playerCreator;
+    private Entity boss;
+    private Boss bossCreator;
 
     @Override
     protected void initSettings(GameSettings gameSettings) {
@@ -33,12 +35,8 @@ public class Game extends GameApplication {
         playerCreator = new Player(100, 0.25, 0.25);
         player = playerCreator.createPlayer();
 
-        FXGL.entityBuilder()
-                .at(200, 200)
-                .viewWithBBox(new Circle(5, Color.BLACK))
-                .with(new CollidableComponent(true))
-                .type(EntityTypes.STAR)
-                .buildAndAttach();
+        bossCreator = new Boss(200, 0.75, 0.75);
+        boss = bossCreator.createBoss();
     }
 
     @Override
@@ -59,7 +57,7 @@ public class Game extends GameApplication {
 
      @Override
      protected void initPhysics(){
-        FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityTypes.PLAYER, EntityTypes.STAR) {
+        FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityTypes.PLAYER, EntityTypes.BOSS) {
             @Override
             protected void onCollision(Entity player, Entity star) {
                 star.removeFromWorld();

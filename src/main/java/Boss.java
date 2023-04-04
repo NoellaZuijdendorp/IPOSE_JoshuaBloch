@@ -1,26 +1,27 @@
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.components.CollidableComponent;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 
-public class Player extends Entity {
+public class Boss {
     private Entity entityBuilder;
     private HP hp;
     private double sizeScaleX;
     private double sizeScaleY;
 
-    public Player(int maxHP ,double sizeScaleX, double sizeScaleY) {
+    public Boss(int maxHP ,double sizeScaleX, double sizeScaleY) {
         this.hp = new HP(maxHP);
         this.sizeScaleX = sizeScaleX;
         this.sizeScaleY = sizeScaleY;
     }
 
-    public Entity createPlayer() {
+    public Entity createBoss() {
         entityBuilder = FXGL.entityBuilder()
-                .at(400, 500)
-                .viewWithBBox("")
-                .scale(sizeScaleX, sizeScaleY)
+                .at(400, 200)
+                .viewWithBBox(new Circle(5, Color.BLACK))
                 .with(new CollidableComponent(true))
-                .type(EntityTypes.PLAYER)
+                .type(EntityTypes.BOSS)
                 .buildAndAttach();
         return entityBuilder;
     }
