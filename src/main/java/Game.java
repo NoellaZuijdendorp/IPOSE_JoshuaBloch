@@ -10,6 +10,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 import java.awt.*;
+import java.util.Map;
 
 public class Game extends GameApplication {
     private Entity player;
@@ -39,8 +40,6 @@ public class Game extends GameApplication {
                 .with(new CollidableComponent(true))
                 .type(EntityTypes.STAR)
                 .buildAndAttach();
-
-        FXGL.getGameScene().setBackgroundColor(Color.DARKGREY);
     }
 
     @Override
@@ -63,9 +62,19 @@ public class Game extends GameApplication {
      protected void initPhysics(){
         FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityTypes.PLAYER, EntityTypes.STAR) {
             @Override
-            protected void onCollision(Entity star, Entity player) {
+            protected void onCollision(Entity player, Entity star) {
+                star.removeFromWorld();
             }
         });
+     }
+
+     @Override
+     protected void initUI() {
+        FXGL.getGameScene().setBackgroundColor(Color.DARKGREY);
+     }
+
+     protected void initGameVars(Map<String, Object> vars){
+//        vars.put();
      }
 
     public static void main(String[] args){
