@@ -73,6 +73,9 @@ public class Game extends GameApplication {
      protected void initUI() {
         FXGL.getGameScene().setBackgroundColor(Color.DARKGREY);
         Node node = FXGL.getAssetLoader().loadTexture("Untitled.png");
+        Entity entity = FXGL.entityBuilder()
+                .view("Untitled.png")
+                .build();
 
      }
 
