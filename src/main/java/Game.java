@@ -73,7 +73,10 @@ public class Game extends GameApplication {
      protected void initUI() {
         FXGL.getGameScene().setBackgroundColor(Color.DARKGREY);
         Node node = FXGL.getAssetLoader().loadTexture("Untitled.png");
-
+        Node bossBackground = FXGL.getAssetLoader().loadTexture("boss-background.png");
+        Node damage0 = FXGL.getAssetLoader().loadTexture("damage-0.png");
+        Node hsleidentaleLogo = FXGL.getAssetLoader().loadTexture("hsleidentale-logo.png");
+        Node projectile1 = FXGL.getAssetLoader().loadTexture("projectile-1.png");
      }
 
      protected void initGameVars(Map<String, Object> vars){
