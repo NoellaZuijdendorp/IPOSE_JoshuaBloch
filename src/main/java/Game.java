@@ -4,7 +4,9 @@ import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.components.CollidableComponent;
 import com.almasb.fxgl.physics.CollisionHandler;
+import com.almasb.fxgl.ui.UI;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -29,7 +31,7 @@ public class Game extends GameApplication {
     protected void initGame(){
         player = FXGL.entityBuilder()
                 .at(400,400)
-                .viewWithBBox("")
+                .viewWithBBox("Untitled.png")
                 .scale(0.05, 0.05)
                 .with(new CollidableComponent(true))
                 .type(EntityTypes.PLAYER)
@@ -41,6 +43,8 @@ public class Game extends GameApplication {
                 .with(new CollidableComponent(true))
                 .type(EntityTypes.STAR)
                 .buildAndAttach();
+
+
     }
 
     @Override
@@ -71,12 +75,28 @@ public class Game extends GameApplication {
 
      @Override
      protected void initUI() {
+        grid = AStarGrid
+        Node node = FXGL.getAssetLoader().loadTexture("whiteRectangle.png");
+
+        Entity whiteRectangle = FXGL.entityBuilder()
+                .view("whiteRectangle.png")
+                .scale(1.5, 1.5)
+                .at(200,450)
+
+                .build();
+
+
         FXGL.getGameScene().setBackgroundColor(Color.DARKGREY);
+<<<<<<< Updated upstream
         Node node = FXGL.getAssetLoader().loadTexture("Untitled.png");
-        Node bossBackground = FXGL.getAssetLoader().loadTexture("boss-background.png");
-        Node damage0 = FXGL.getAssetLoader().loadTexture("damage-0.png");
-        Node hsleidentaleLogo = FXGL.getAssetLoader().loadTexture("hsleidentale-logo.png");
-        Node projectile1 = FXGL.getAssetLoader().loadTexture("projectile-1.png");
+        Entity entity = FXGL.entityBuilder()
+                .view("Untitled.png")
+                .build();
+=======
+        FXGL.getGameWorld().addEntity(whiteRectangle);
+
+>>>>>>> Stashed changes
+
      }
 
      protected void initGameVars(Map<String, Object> vars){
