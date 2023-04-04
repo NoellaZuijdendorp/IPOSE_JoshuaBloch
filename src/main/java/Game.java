@@ -13,26 +13,25 @@ import java.awt.*;
 import java.util.Map;
 
 public class Game extends GameApplication {
+    private final int gameWidth = 800;
+    private final int gameHeight = 800;
+    private final String gameTitle = "HSLEIDENTALE";
+    private final String gameVersion = "1.0";
     private Entity player;
+    private Player playerCreator;
 
     @Override
     protected void initSettings(GameSettings gameSettings) {
-        gameSettings.setWidth(800);
-        gameSettings.setHeight(800);
-        gameSettings.setTitle("HSLEIDENTALE");
-        gameSettings.setVersion("1.0");
-
+        gameSettings.setWidth(gameWidth);
+        gameSettings.setHeight(gameHeight);
+        gameSettings.setTitle(gameTitle);
+        gameSettings.setVersion(gameVersion);
     }
 
     @Override
     protected void initGame(){
-        player = FXGL.entityBuilder()
-                .at(400,400)
-                .viewWithBBox("")
-                .scale(0.05, 0.05)
-                .with(new CollidableComponent(true))
-                .type(EntityTypes.PLAYER)
-                .buildAndAttach();
+        playerCreator = new Player(100, 0.25, 0.25);
+        player = playerCreator.createPlayer();
 
         FXGL.entityBuilder()
                 .at(200, 200)
