@@ -9,7 +9,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
-
+import com.almasb.fxgl.core.asset.AssetLoaderService;
 import java.awt.*;
 import java.util.Map;
 
@@ -72,6 +72,8 @@ public class Game extends GameApplication {
      @Override
      protected void initUI() {
         FXGL.getGameScene().setBackgroundColor(Color.DARKGREY);
+        Node node = FXGL.getAssetLoader().loadTexture("Untitled.png");
+
      }
 
      protected void initGameVars(Map<String, Object> vars){
