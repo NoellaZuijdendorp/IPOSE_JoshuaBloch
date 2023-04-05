@@ -71,7 +71,12 @@ public class HomeScreen extends Application {
                 @Override
                 public void handle(MouseEvent e) {
                     System.out.println("Knop highscore gedrukt");
-                    //launch pagina highscore
+                    Highscore highscore = new Highscore();
+                    try {
+                        highscore.start(homeScreen);
+                    } catch (FileNotFoundException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 }
             };
             buttonHomeScreen_highscore.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandlerHighscore);

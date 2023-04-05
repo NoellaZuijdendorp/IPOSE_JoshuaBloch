@@ -28,10 +28,10 @@ public class Login extends Application {
         imageViewUserName.setFitHeight(90);
         imageViewUserName.setFitWidth(550);
 
-        Label label = new Label();
-        label.setGraphic(imageViewUserName);
-        label.setTranslateX(20);
-        label.setTranslateY(-30);
+        Label label_userName = new Label();
+        label_userName.setGraphic(imageViewUserName);
+        label_userName.setTranslateX(20);
+        label_userName.setTranslateY(-30);
 
         Image imageLogin = new Image(new FileInputStream("C:\\Users\\nozu2\\OneDrive - Hogeschool Leiden\\Leerjaar 1\\Periode 3\\IPOSE\\submit.png"));
         ImageView imageViewLogin = new ImageView(imageLogin);
@@ -61,7 +61,7 @@ public class Login extends Application {
 
         schermLogin.add(usernameField, 0, 2);
         schermLogin.add(submitButton, 0, 2);
-        schermLogin.add(label, 0, 2);
+        schermLogin.add(label_userName, 0, 2);
 
         schermLogin.setStyle("-fx-background-color: black");
 
@@ -90,5 +90,9 @@ public class Login extends Application {
     public static void main(String[] args)
     {
         launch(args);
+    }
+
+    public String[] getNames() {
+        return names;
     }
 }
