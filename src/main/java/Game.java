@@ -1,12 +1,25 @@
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
+import com.almasb.fxgl.app.scene.Viewport;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
+import com.almasb.fxgl.entity.level.Level;
+import com.almasb.fxgl.entity.level.tiled.TMXLevelLoader;
 import com.almasb.fxgl.physics.CollisionHandler;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import java.util.Map;
+import com.almasb.fxgl.app.GameApplication;
+import com.almasb.fxgl.app.GameSettings;
+import com.almasb.fxgl.core.math.Vec2;
+import com.almasb.fxgl.ui.FXGLCheckBox;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static com.almasb.fxgl.dsl.FXGL.*;
+
 
 public class Game extends GameApplication {
     private final int gameWidth = 800;
@@ -28,10 +41,30 @@ public class Game extends GameApplication {
 
     @Override
     protected void initGame(){
+        getGameWorld().addEntityFactory(new GameFactory());
+        spawn("background");
+        spawn("collision");
+//        setLevelFromMap("level1.tmx");
+//        var level = setLevelFromMap("tmx/level1.tmx");
+//        var map = new HashMap<String, Integer>();
+//        Level level =  getAssetLoader().loadLevel("tmx/level1.tmx", new TMXLevelLoader());
+//        getGameWorld().setLevel(level);
+//        map.put("h", 1);
+//        map.put("kjj", 2);
+
+//        player = null;
+//        Viewport viewport = getGameScene().getViewport();
+//        viewport.setBounds(-1500, 0, 250*70, getAppHeight());
+//        viewport.bindToEntity(player, getAppWidth() / 2, getAppHeight() /2);
+//        viewport.setLazy(true);
+
+
+
         player = playerCreator.createEntity();
 
         bossCreator = new Boss(0.75, 0.75);
         boss = bossCreator.createEntity();
+
     }
 
     @Override
@@ -60,7 +93,7 @@ public class Game extends GameApplication {
         FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityTypes.PLAYER, EntityTypes.BOSS) {
             @Override
             protected void onCollision(Entity player, Entity bossProjectile) {
-                FXGL.inc("hp", playerCreator.getsDamaged());
+//                FXGL.inc("hp", playerCreator.getsDamaged());
                 playerCreator.getHP().death(player);
             }
         });
