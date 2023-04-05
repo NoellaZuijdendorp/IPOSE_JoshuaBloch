@@ -2,49 +2,36 @@ import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
-import com.almasb.fxgl.entity.components.CollidableComponent;
 import com.almasb.fxgl.physics.CollisionHandler;
-import com.almasb.fxgl.ui.UI;
-import javafx.scene.Node;
-import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
-import com.almasb.fxgl.core.asset.AssetLoaderService;
-import java.awt.*;
 import java.util.Map;
 
 public class Game extends GameApplication {
+    private final int gameWidth = 800;
+    private final int gameHeight = 800;
+    private final String gameTitle = "HSLEIDENTALE";
+    private final String gameVersion = "1.0";
     private Entity player;
+    private Player playerCreator = new Player(3, 0.25, 0.25);
+    private Entity boss;
+    private Boss bossCreator;
 
     @Override
     protected void initSettings(GameSettings gameSettings) {
-        gameSettings.setWidth(800);
-        gameSettings.setHeight(800);
-        gameSettings.setTitle("HSLEIDENTALE");
-        gameSettings.setVersion("1.0");
-
+        gameSettings.setWidth(gameWidth);
+        gameSettings.setHeight(gameHeight);
+        gameSettings.setTitle(gameTitle);
+        gameSettings.setVersion(gameVersion);
     }
 
     @Override
     protected void initGame(){
-        player = FXGL.entityBuilder()
-                .at(400,400)
-                .viewWithBBox("Untitled.png")
-                .scale(0.05, 0.05)
-                .with(new CollidableComponent(true))
-                .type(EntityTypes.PLAYER)
-                .buildAndAttach();
+        player = playerCreator.createEntity();
 
-        FXGL.entityBuilder()
-                .at(200, 200)
-                .viewWithBBox(new Circle(5, Color.BLACK))
-                .with(new CollidableComponent(true))
-                .type(EntityTypes.STAR)
-                .buildAndAttach();
-
-
+        bossCreator = new Boss(0.75, 0.75);
+        boss = bossCreator.createEntity();
     }
 
     @Override
@@ -61,46 +48,36 @@ public class Game extends GameApplication {
         FXGL.onKey(KeyCode.S,() -> {
             player.translateY(5);
         });
+        //TESTING PYPRPOSES
+        //TODO: HAAL WEG
+        FXGL.onKey(KeyCode.F,() -> {
+            System.out.println(playerCreator.getHP().getCurrentHP());
+        });
     }
 
      @Override
-     protected void initPhysics(){
-        FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityTypes.PLAYER, EntityTypes.STAR) {
+     protected void initPhysics(){ //TODO: VERANDER 'BOSS' NAAR PROJECTILE
+        FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityTypes.PLAYER, EntityTypes.BOSS) {
             @Override
-            protected void onCollision(Entity player, Entity star) {
-                star.removeFromWorld();
+            protected void onCollision(Entity player, Entity bossProjectile) {
+                FXGL.inc("hp", playerCreator.getsDamaged());
+                playerCreator.getHP().death(player);
             }
         });
      }
 
      @Override
      protected void initUI() {
-        grid = AStarGrid
-        Node node = FXGL.getAssetLoader().loadTexture("whiteRectangle.png");
-
-        Entity whiteRectangle = FXGL.entityBuilder()
-                .view("whiteRectangle.png")
-                .scale(1.5, 1.5)
-                .at(200,450)
-
-                .build();
-
-
         FXGL.getGameScene().setBackgroundColor(Color.DARKGREY);
-<<<<<<< Updated upstream
-        Node node = FXGL.getAssetLoader().loadTexture("Untitled.png");
-        Entity entity = FXGL.entityBuilder()
-                .view("Untitled.png")
-                .build();
-=======
-        FXGL.getGameWorld().addEntity(whiteRectangle);
-
->>>>>>> Stashed changes
-
+        javafx.scene.control.Label textje = new Label("health ding: ");
+        textje.setTranslateX(200);
+        textje.setTranslateY(200);
+        FXGL.getGameScene().addUINode(textje);
+        textje.textProperty().bind(FXGL.getWorldProperties().intProperty("hp").asString());
      }
 
      protected void initGameVars(Map<String, Object> vars){
-//        vars.put();
+        vars.put("hp", playerCreator.getHP().getCurrentHP());
      }
 
     public static void main(String[] args){
