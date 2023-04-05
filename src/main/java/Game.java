@@ -4,6 +4,7 @@ import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.components.CollidableComponent;
 import com.almasb.fxgl.physics.CollisionHandler;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -18,7 +19,7 @@ public class Game extends GameApplication {
     private final String gameTitle = "HSLEIDENTALE";
     private final String gameVersion = "1.0";
     private Entity player;
-    private Player playerCreator;
+    private Player playerCreator = new Player(3, 0.25, 0.25);
     private Entity boss;
     private Boss bossCreator;
 
@@ -32,7 +33,6 @@ public class Game extends GameApplication {
 
     @Override
     protected void initGame(){
-        playerCreator = new Player(100, 0.25, 0.25);
         player = playerCreator.createPlayer();
 
         bossCreator = new Boss(200, 0.75, 0.75);
@@ -53,6 +53,10 @@ public class Game extends GameApplication {
         FXGL.onKey(KeyCode.S,() -> {
             player.translateY(5);
         });
+        //TESTING PYPRPOSES
+        FXGL.onKey(KeyCode.F,() -> {
+            System.out.println(playerCreator.getHP().getCurrentHP());
+        });
     }
 
      @Override
@@ -60,7 +64,7 @@ public class Game extends GameApplication {
         FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityTypes.PLAYER, EntityTypes.BOSS) {
             @Override
             protected void onCollision(Entity player, Entity star) {
-                star.removeFromWorld();
+                FXGL.inc("hp", playerCreator.getsDamaged());
             }
         });
      }
@@ -68,10 +72,15 @@ public class Game extends GameApplication {
      @Override
      protected void initUI() {
         FXGL.getGameScene().setBackgroundColor(Color.DARKGREY);
+        javafx.scene.control.Label textje = new Label("health ding: ");
+        textje.setTranslateX(200);
+        textje.setTranslateY(200);
+        FXGL.getGameScene().addUINode(textje);
+        textje.textProperty().bind(FXGL.getWorldProperties().intProperty("hp").asString());
      }
 
      protected void initGameVars(Map<String, Object> vars){
-//        vars.put();
+        vars.put("hp", playerCreator.getHP().getCurrentHP());
      }
 
     public static void main(String[] args){
