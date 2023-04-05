@@ -9,8 +9,7 @@ public class Projectile {
     private int damage;
     private int speed;
 
-    public Projectile(Entity entity, double sizeScaleX, double sizeScaleY, int damage, int speed) {
-        this.entity = entity;
+    public Projectile(double sizeScaleX, double sizeScaleY, int damage, int speed) {
         this.sizeScaleX = sizeScaleX;
         this.sizeScaleY = sizeScaleY;
         this.damage = damage;
@@ -19,11 +18,11 @@ public class Projectile {
 
     public Entity createEntity() { //TODO: VERANDER ALLES IN DEZE FUNCTIE
         entity = FXGL.entityBuilder()
-                .at(400, 500)
+                .at(150, 320)
                 .viewWithBBox("")
                 .scale(sizeScaleX, sizeScaleY)
                 .with(new CollidableComponent(true))
-                .type(EntityTypes.PLAYER)
+                .type(EntityTypes.PROJECTILE)
                 .buildAndAttach();
         return entity;
     }

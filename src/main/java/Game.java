@@ -17,6 +17,8 @@ public class Game extends GameApplication {
     private Player playerCreator = new Player(3, 0.25, 0.25);
     private Entity boss;
     private Boss bossCreator;
+    private Entity testProjectile;
+    private Projectile testProjectileCreator;
 
     @Override
     protected void initSettings(GameSettings gameSettings) {
@@ -32,6 +34,9 @@ public class Game extends GameApplication {
 
         bossCreator = new Boss(0.75, 0.75);
         boss = bossCreator.createEntity();
+
+        testProjectileCreator = new Projectile(1, 1, 2, 2);
+        testProjectile = testProjectileCreator.createEntity();
     }
 
     @Override
@@ -56,11 +61,11 @@ public class Game extends GameApplication {
     }
 
      @Override
-     protected void initPhysics(){ //TODO: VERANDER 'BOSS' NAAR PROJECTILE
-        FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityTypes.PLAYER, EntityTypes.BOSS) {
+     protected void initPhysics(){
+        FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityTypes.PLAYER, EntityTypes.PROJECTILE) {
             @Override
             protected void onCollision(Entity player, Entity bossProjectile) {
-                FXGL.inc("hp", playerCreator.getsDamaged());
+                FXGL.inc("hp", playerCreator.getsDamaged(testProjectileCreator));
                 playerCreator.getHP().death(player);
             }
         });
