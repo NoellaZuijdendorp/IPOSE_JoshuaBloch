@@ -12,10 +12,10 @@ import javafx.scene.control.Button;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-public class login extends Application {
+public class HomeScreen extends Application {
 
-        public void start(Stage login) throws FileNotFoundException {
-            login.setTitle("HSLEIDENTALE");
+        public void start(Stage homeScreen) throws FileNotFoundException {
+            homeScreen.setTitle("HSLEIDENTALE");
 
             ///Button New Game
             Image imageNewGame = new Image(new FileInputStream("C:\\Users\\nozu2\\OneDrive - Hogeschool Leiden\\Leerjaar 1\\Periode 3\\IPOSE\\newGame.png"));
@@ -23,14 +23,14 @@ public class login extends Application {
             imageViewNewGame.setFitHeight(100);
             imageViewNewGame.setFitWidth(600);
 
-            Button buttonLogin_newgame = new Button();
-            buttonLogin_newgame.setGraphic(imageViewNewGame);
-            buttonLogin_newgame.setStyle("-fx-background-color: black");
-            buttonLogin_newgame.setScaleX(0.2);
-            buttonLogin_newgame.setScaleY(0.2);
+            Button buttonHomeScreen_newgame = new Button();
+            buttonHomeScreen_newgame.setGraphic(imageViewNewGame);
+            buttonHomeScreen_newgame.setStyle("-fx-background-color: black");
+            buttonHomeScreen_newgame.setScaleX(0.2);
+            buttonHomeScreen_newgame.setScaleY(0.2);
 
-            buttonLogin_newgame.setTranslateX(200);
-            buttonLogin_newgame.setTranslateY(150);
+            buttonHomeScreen_newgame.setTranslateX(200);
+            buttonHomeScreen_newgame.setTranslateY(150);
 
                 ///Event newGame handler
             EventHandler<MouseEvent> eventHandlerNewGame =
@@ -41,7 +41,7 @@ public class login extends Application {
                             //launch pagina NewGame
                         }
                     };
-            buttonLogin_newgame.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandlerNewGame);
+            buttonHomeScreen_newgame.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandlerNewGame);
 
             ///Button Highscore
             Image imageHigscore= new Image(new FileInputStream("C:\\Users\\nozu2\\OneDrive - Hogeschool Leiden\\Leerjaar 1\\Periode 3\\IPOSE\\highscore.png"));
@@ -49,14 +49,14 @@ public class login extends Application {
             imageViewHighscore.setFitHeight(100);
             imageViewHighscore.setFitWidth(600);
 
-            Button buttonLogin_highscore = new Button();
-            buttonLogin_highscore.setGraphic(imageViewHighscore);
-            buttonLogin_highscore.setStyle("-fx-background-color: black");
-            buttonLogin_highscore.setScaleX(0.2);
-            buttonLogin_highscore.setScaleY(0.2);
+            Button buttonHomeScreen_highscore = new Button();
+            buttonHomeScreen_highscore.setGraphic(imageViewHighscore);
+            buttonHomeScreen_highscore.setStyle("-fx-background-color: black");
+            buttonHomeScreen_highscore.setScaleX(0.2);
+            buttonHomeScreen_highscore.setScaleY(0.2);
 
-            buttonLogin_highscore.setTranslateX(20);
-            buttonLogin_highscore.setTranslateY(150);
+            buttonHomeScreen_highscore.setTranslateX(20);
+            buttonHomeScreen_highscore.setTranslateY(150);
 
                 ///button highscore event handler
             EventHandler<MouseEvent> eventHandlerHighscore =
@@ -67,17 +67,17 @@ public class login extends Application {
                     //launch pagina highscore
                 }
             };
-            buttonLogin_highscore.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandlerHighscore);
+            buttonHomeScreen_highscore.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandlerHighscore);
 
             ///Scherm
-            GridPane schermLogin = new GridPane();
+            GridPane schermHomeScreen = new GridPane();
 
-            schermLogin.setHgap(3);
-            schermLogin.setVgap(5);
-            schermLogin.setStyle("-fx-background-color: black;");
+            schermHomeScreen.setHgap(3);
+            schermHomeScreen.setVgap(5);
+            schermHomeScreen.setStyle("-fx-background-color: black;");
 
-            schermLogin.getChildren().add(buttonLogin_highscore);
-            schermLogin.getChildren().add(buttonLogin_newgame);
+            schermHomeScreen.getChildren().add(buttonHomeScreen_highscore);
+            schermHomeScreen.getChildren().add(buttonHomeScreen_newgame);
 
             ///Image HSLEIDENTALE
             Image image = new Image(new FileInputStream("C:\\Users\\nozu2\\OneDrive - Hogeschool Leiden\\Leerjaar 1\\Periode 3\\IPOSE\\HSLEIDENTALE_white.png"));
@@ -87,14 +87,14 @@ public class login extends Application {
             imageView.setTranslateY(350);
             imageView.setFitHeight(455);
             imageView.setFitWidth(500);
-            schermLogin.getChildren().add(imageView);
+            schermHomeScreen.getChildren().add(imageView);
 
             imageView.setPreserveRatio(true);
 
-            Scene sc = new Scene(schermLogin, 800, 500);
+            Scene sc = new Scene(schermHomeScreen, 800, 500);
 
-            login.setScene(sc);
-            login.show();
+            homeScreen.setScene(sc);
+            homeScreen.show();
 
         }
 
