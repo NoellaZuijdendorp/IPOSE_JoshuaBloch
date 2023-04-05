@@ -7,6 +7,7 @@ public class Player extends Entity {
     private HP hp;
     private double sizeScaleX;
     private double sizeScaleY;
+    private long lastHitTime = 0;
 
     public Player(int maxHP ,double sizeScaleX, double sizeScaleY) {
         this.hp = new HP(maxHP);
@@ -30,9 +31,15 @@ public class Player extends Entity {
     }
 
     public int getsDamaged() {
+        long currentTime = System.currentTimeMillis();
         int currentHP = getHP().getCurrentHP();
-        int damageValue = -1;
-        hp.setCurrentHP(currentHP - 1);
+        int damageValue = 0;
+
+        if (currentTime - lastHitTime > 1000) {
+            hp.setCurrentHP(currentHP - 1);
+            lastHitTime = currentTime;
+            damageValue = -1;
+        }
         return damageValue;
     }
 }

@@ -19,8 +19,7 @@ public class Game extends GameApplication {
     private final String gameTitle = "HSLEIDENTALE";
     private final String gameVersion = "1.0";
     private Entity player;
-    private Player playerCreator = new Player(100, 0.25, 0.25);
-//    private int playerHP = playerCreator.getHP().getCurrentHP();
+    private Player playerCreator = new Player(3, 0.25, 0.25);
     private Entity boss;
     private Boss bossCreator;
 
