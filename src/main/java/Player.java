@@ -28,4 +28,11 @@ public class Player extends Entity {
     public HP getHP() {
         return hp;
     }
+
+    public int getsDamaged() {
+        int currentHP = getHP().getCurrentHP();
+        int damageValue = -1;
+        hp.setCurrentHP(currentHP - 1);
+        return damageValue;
+    }
 }
