@@ -29,7 +29,6 @@ public class Game extends GameApplication {
         gameSettings.setHeight(gameHeight);
         gameSettings.setTitle(gameTitle);
         gameSettings.setVersion(gameVersion);
-
     }
 
     @Override
