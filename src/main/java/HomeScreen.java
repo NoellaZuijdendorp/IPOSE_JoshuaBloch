@@ -1,3 +1,4 @@
+import com.almasb.fxgl.app.GameApplication;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
@@ -38,7 +39,13 @@ public class HomeScreen extends Application {
                         @Override
                         public void handle(MouseEvent e) {
                             System.out.println("Knop newGame gedrukt");
-                            //launch pagina NewGame
+                            Login login = new Login();
+                            try {
+                                login.start(homeScreen);
+                            } catch (FileNotFoundException ex) {
+                                throw new RuntimeException(ex);
+                            }
+
                         }
                     };
             buttonHomeScreen_newgame.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandlerNewGame);
@@ -95,9 +102,7 @@ public class HomeScreen extends Application {
 
             homeScreen.setScene(sc);
             homeScreen.show();
-
         }
-
 
     public static void main(String[] args)
     {
