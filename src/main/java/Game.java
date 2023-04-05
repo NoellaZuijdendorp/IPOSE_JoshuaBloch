@@ -2,15 +2,10 @@ import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
-import com.almasb.fxgl.entity.components.CollidableComponent;
 import com.almasb.fxgl.physics.CollisionHandler;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
-
-import java.awt.*;
 import java.util.Map;
 
 public class Game extends GameApplication {
@@ -33,10 +28,10 @@ public class Game extends GameApplication {
 
     @Override
     protected void initGame(){
-        player = playerCreator.createPlayer();
+        player = playerCreator.createEntity();
 
-        bossCreator = new Boss(200, 0.75, 0.75);
-        boss = bossCreator.createBoss();
+        bossCreator = new Boss(0.75, 0.75);
+        boss = bossCreator.createEntity();
     }
 
     @Override
@@ -54,17 +49,19 @@ public class Game extends GameApplication {
             player.translateY(5);
         });
         //TESTING PYPRPOSES
+        //TODO: HAAL WEG
         FXGL.onKey(KeyCode.F,() -> {
             System.out.println(playerCreator.getHP().getCurrentHP());
         });
     }
 
      @Override
-     protected void initPhysics(){
+     protected void initPhysics(){ //TODO: VERANDER 'BOSS' NAAR PROJECTILE
         FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityTypes.PLAYER, EntityTypes.BOSS) {
             @Override
-            protected void onCollision(Entity player, Entity star) {
+            protected void onCollision(Entity player, Entity bossProjectile) {
                 FXGL.inc("hp", playerCreator.getsDamaged());
+                playerCreator.getHP().death(player);
             }
         });
      }
