@@ -56,7 +56,7 @@ public class Game extends GameApplication {
     }
 
      @Override
-     protected void initPhysics(){
+     protected void initPhysics(){ //TODO: VERANDER 'BOSS' NAAR PROJECTILE
         FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityTypes.PLAYER, EntityTypes.BOSS) {
             @Override
             protected void onCollision(Entity player, Entity bossProjectile) {

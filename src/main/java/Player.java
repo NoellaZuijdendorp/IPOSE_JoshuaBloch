@@ -27,10 +27,10 @@ public class Player extends Character {
         return hp;
     }
 
-    public int getsDamaged() {
+    public int getsDamaged(Projectile projectile) {
         long currentTime = System.currentTimeMillis();
         int currentHP = getHP().getCurrentHP();
-        int damageValue = 0;
+        int damageValue = projectile.getDamage();
 
         if (currentTime - lastHitTime > 1000) {
             hp.setCurrentHP(currentHP - 1);
