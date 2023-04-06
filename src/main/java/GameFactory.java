@@ -25,10 +25,9 @@ import static com.almasb.fxgl.dsl.FXGL.*;
 
 public class GameFactory implements EntityFactory {
 
-    @Spawns("collision")
+    @Spawns("platform")
     public Entity newPlatform(SpawnData data){
         return entityBuilder(data)
-                .type(EntityTypes.COLLISION)
                 .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
                 .with(new PhysicsComponent())
                 .build();

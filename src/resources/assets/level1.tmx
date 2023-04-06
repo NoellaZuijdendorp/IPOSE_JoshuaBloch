@@ -3,27 +3,27 @@
  <tileset firstgid="1" name="Images" tilewidth="963" tileheight="246" tilecount="5" columns="0">
   <grid orientation="orthogonal" width="1" height="1"/>
   <tile id="0">
-   <image width="629" height="246" source="../../../../../../../Downloads/Assets/Assets/boss-background.png"/>
+   <image width="629" height="246" source="../Downloads/Assets/Assets/boss-background.png"/>
   </tile>
   <tile id="1">
-   <image width="963" height="101" source="../../../../../../../Downloads/Assets/Assets/hsleidentale-logo.png"/>
+   <image width="963" height="101" source="../Downloads/Assets/Assets/hsleidentale-logo.png"/>
   </tile>
   <tile id="2">
-   <image width="210" height="150" source="../../../../../../../Downloads/zwart.png"/>
+   <image width="210" height="150" source="../Downloads/zwart.png"/>
   </tile>
   <tile id="3">
-   <image width="180" height="135" source="../../../../../../../Downloads/witteVierkant.png"/>
+   <image width="180" height="135" source="../Downloads/witteVierkant.png"/>
   </tile>
   <tile id="4">
-   <image width="390" height="195" source="../../../../../../../Downloads/whiteRectangle.png"/>
+   <image width="390" height="195" source="../Downloads/whiteRectangle.png"/>
   </tile>
  </tileset>
  <tileset firstgid="6" name="zwartBlok" tilewidth="32" tileheight="32" tilecount="45" columns="9">
-  <image source="../../../../../../../Downloads/zwartBlok.png" width="315" height="165"/>
+  <image source="../Downloads/zwartBlok.png" width="315" height="165"/>
  </tileset>
- <tileset firstgid="51" source="../../../../../Tiled/collision.tsx"/>
+ <tileset firstgid="51" source="../OneDrive/Documenten/Tiled/collision.tsx"/>
  <tileset firstgid="55" name="witteVierkant" tilewidth="32" tileheight="32" tilecount="20" columns="5">
-  <image source="../../../../../../../Downloads/witteVierkant.png" width="180" height="135"/>
+  <image source="../Downloads/witteVierkant.png" width="180" height="135"/>
  </tileset>
  <layer id="6" name="Blackground" width="25" height="25">
   <data encoding="csv">

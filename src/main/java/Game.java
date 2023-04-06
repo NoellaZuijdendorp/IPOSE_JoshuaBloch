@@ -6,6 +6,8 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.level.Level;
 import com.almasb.fxgl.entity.level.tiled.TMXLevelLoader;
 import com.almasb.fxgl.physics.CollisionHandler;
+import com.almasb.fxgl.physics.PhysicsComponent;
+import javafx.geometry.Point2D;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
@@ -42,13 +44,14 @@ public class Game extends GameApplication {
     @Override
     protected void initGame(){
         getGameWorld().addEntityFactory(new GameFactory());
+        player = null;
         spawn("background");
-        spawn("collision");
+//        spawn("platform");
 //        setLevelFromMap("level1.tmx");
-//        var level = setLevelFromMap("tmx/level1.tmx");
+//        var level = setLevelFromMap("tmx/level2.tmx");
 //        var map = new HashMap<String, Integer>();
-//        Level level =  getAssetLoader().loadLevel("tmx/level1.tmx", new TMXLevelLoader());
-//        getGameWorld().setLevel(level);
+//        Level level1 =  getAssetLoader().loadLevel("tmx/level1.tmx", new TMXLevelLoader());
+//        getGameWorld().setLevel(level1);
 //        map.put("h", 1);
 //        map.put("kjj", 2);
 
@@ -67,6 +70,14 @@ public class Game extends GameApplication {
 
     }
 
+    private void setLevel(int levelNum){
+        if (player!=null){
+            player.getComponent(PhysicsComponent.class).overwritePosition(new Point2D(50,50));
+            player.setZIndex(Integer.MAX_VALUE);
+        }
+
+        Level level = setLevelFromMap("tmx/level" + levelNum + ".tmx");
+    }
     @Override
     protected void initInput(){
         FXGL.onKey(KeyCode.D,() -> {
