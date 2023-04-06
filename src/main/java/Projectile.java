@@ -1,5 +1,6 @@
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
+import com.almasb.fxgl.entity.Spawns;
 import com.almasb.fxgl.entity.components.CollidableComponent;
 import javafx.geometry.Point2D;
 
@@ -19,10 +20,11 @@ public class Projectile {
         this.speedY = speedY;
     }
 
+    @Spawns("projectile")
     public Entity createEntity() { //TODO: VERANDER ALLES IN DEZE FUNCTIE
         entity = FXGL.entityBuilder()
                 .at(150, 320)
-                .viewWithBBox("")
+                .viewWithBBox("img.png")
                 .scale(sizeScaleX, sizeScaleY)
                 .with(new CollidableComponent(true))
                 .with("velocity", new Point2D(speedX, speedY))

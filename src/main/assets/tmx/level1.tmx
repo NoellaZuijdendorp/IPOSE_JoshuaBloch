@@ -22,7 +22,7 @@
   <image source="../zwartBlok.png" width="315" height="165"/>
  </tileset>
  <tileset firstgid="51" source="Textures/collision.tsx"/>
- <tileset firstgid="55" name="witteVierkant" tilewidth="32" tileheight="32" tilecount="20" columns="5">
+ <tileset firstgid="51" name="witteVierkant" tilewidth="32" tileheight="32" tilecount="20" columns="5">
   <image source="../witteVierkant.png" width="180" height="135"/>
  </tileset>
  <layer id="6" name="Blackground" width="25" height="25">
@@ -57,12 +57,5 @@
  <objectgroup id="3" name="Boss" locked="1">
   <object id="5" type="background" gid="1" x="29" y="359" width="756" height="339"/>
   <object id="7" type="background" gid="2" x="23" y="805" width="766" height="86"/>
- </objectgroup>
- <objectgroup id="5" name="Rechthoek">
-  <object id="60" type="background" gid="5" x="217" y="718.667" width="419.333" height="403.667"/>
-  <object id="62" type="platform" x="571.333" y="382" width="16.3333" height="275"/>
-  <object id="63" type="platform" x="249.333" y="380.667" width="340.333" height="32"/>
-  <object id="64" type="platform" x="249.667" y="378.667" width="15.3333" height="283"/>
-  <object id="65" type="platform" x="248" y="629" width="340.333" height="29.3333"/>
  </objectgroup>
 </map>

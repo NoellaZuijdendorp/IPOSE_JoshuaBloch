@@ -13,9 +13,9 @@ public class Boss extends Character {
 
     public Entity createEntity() {
         entity = FXGL.entityBuilder()
-                .at(250, 50)
+                .at(275, 30)
                 .scale(0.5, 0.5)
-                .viewWithBBox("boss.png")
+                .viewWithBBox("8-bit_rood.png")
                 .with(new CollidableComponent(true))
                 .type(EntityTypes.BOSS)
                 .buildAndAttach();

@@ -1,5 +1,7 @@
 import com.almasb.fxgl.entity.Entity;
 
+import static com.almasb.fxgl.dsl.FXGLForKtKt.spawn;
+
 public class HP {
     private int currentHP;
     private int maxHP;
@@ -27,7 +29,7 @@ public class HP {
     public void death(Entity character) {
         if (currentHP <= 0) {
             character.removeFromWorld();
-            //TODO: INSERT DEATH SCREEN
+            spawn("deathScreen");
             System.out.println("YOURE DEAD, no big suprise");
         }
     }

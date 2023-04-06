@@ -44,12 +44,12 @@ public class Highscore extends Application implements Runnable {
         Label label_highscore_image = new Label();
 
         label_highscore_image.setGraphic(imageViewHighscore);
-        label_highscore_image.setStyle("-fx-background-color: black");
+        label_highscore_image.setStyle("-fx-background-color: white");
         label_highscore_image.setTranslateX(100);
         label_highscore_image.setTranslateY(10);
 
 
-        schermHighscore.setStyle("-fx-background-color: black");
+        schermHighscore.setStyle("-fx-background-color: white");
         schermHighscore.add(label_highscore_image, 0, 2);
 
         Scene scLogin = new Scene(schermHighscore, 800, 500);
