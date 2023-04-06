@@ -1,4 +1,5 @@
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -15,11 +16,11 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-public class Login extends Application {
+public class Login extends Application implements Runnable{
 
-    private String[] names = new String[]{};
+    private static String[] names = new String[]{};
 
-    @Override
+
     public void start(Stage login) throws FileNotFoundException {
         login.setTitle("Login");
 
@@ -82,17 +83,25 @@ public class Login extends Application {
                             System.out.println(i);
                         }
                         usernameField.clear();
+                        Game game = new Game();
+                        game.run();
                     }
                 };
+
         submitButton.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandlerEnterUserName);
     }
 
-    public static void main(String[] args)
-    {
-        launch(args);
+//    public static void main(String[] args)
+//    {
+//        launch(args);
+//    }
+
+    public static String[] getNames() {
+        return names;
     }
 
-    public String[] getNames() {
-        return names;
+    @Override
+    public void run() {
+        Platform.runLater(this);
     }
 }

@@ -1,6 +1,6 @@
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -10,15 +10,14 @@ import javafx.stage.Stage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-public class Highscore extends Application {
+public class Highscore extends Application implements Runnable {
     @Override
     public void start(Stage highscore) throws FileNotFoundException {
         highscore.setTitle("Highscore");
 
         GridPane schermHighscore = new GridPane();
 
-        Login highscores = new Login();
-        for (String i : highscores.getNames()){
+        for (String i : Login.getNames()){
                 Label label_highscore = new Label();
                 Label label_layout = new Label("------------------------------------");
                 label_highscore.setText(i);
@@ -26,14 +25,13 @@ public class Highscore extends Application {
                 label_highscore.setTranslateX(100);
                 label_layout.setTranslateX(100);
 
-                int x_highscore = 150;
-                int x_layout = 160;
+                int y_highscore = 150;
+                int y_layout = 160;
 
                 for (int m = 0; m < i.length(); m++) {
-                    label_highscore.setTranslateY(x_highscore + 10);
-                    label_layout.setTranslateY(x_layout + 10);
+                    label_highscore.setTranslateY(y_highscore + 10);
+                    label_layout.setTranslateY(y_layout + 10);
                 }
-
                 schermHighscore.add(label_highscore, 0, 2);
                 schermHighscore.add(label_layout, 0, 2);
             }
@@ -59,9 +57,10 @@ public class Highscore extends Application {
         highscore.show();
     }
 
-    public static void main(String[] args)
-    {
-        launch(args);
+    @Override
+    public void run() {
+
+        Platform.runLater(this);
     }
 
 }

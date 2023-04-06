@@ -1,70 +1,46 @@
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
-import com.almasb.fxgl.app.scene.Viewport;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
-import com.almasb.fxgl.entity.level.Level;
-import com.almasb.fxgl.entity.level.tiled.TMXLevelLoader;
+import com.almasb.fxgl.entity.components.CollidableComponent;
 import com.almasb.fxgl.physics.CollisionHandler;
-import javafx.scene.control.Label;
+import javafx.application.Platform;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
-import java.util.Map;
-import com.almasb.fxgl.app.GameApplication;
-import com.almasb.fxgl.app.GameSettings;
-import com.almasb.fxgl.core.math.Vec2;
-import com.almasb.fxgl.ui.FXGLCheckBox;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 
-import java.util.HashMap;
+import java.awt.*;
 import java.util.Map;
 
-import static com.almasb.fxgl.dsl.FXGL.*;
-
-
-public class Game extends GameApplication {
-    private final int gameWidth = 800;
-    private final int gameHeight = 800;
-    private final String gameTitle = "HSLEIDENTALE";
-    private final String gameVersion = "1.0";
+public class Game extends GameApplication implements Runnable {
     private Entity player;
-    private Player playerCreator = new Player(3, 0.25, 0.25);
-    private Entity boss;
-    private Boss bossCreator;
 
     @Override
     protected void initSettings(GameSettings gameSettings) {
-        gameSettings.setWidth(gameWidth);
-        gameSettings.setHeight(gameHeight);
-        gameSettings.setTitle(gameTitle);
-        gameSettings.setVersion(gameVersion);
+        gameSettings.setWidth(800);
+        gameSettings.setHeight(800);
+        gameSettings.setTitle("HSLEIDENTALE");
+        gameSettings.setVersion("1.0");
+
     }
 
     @Override
     protected void initGame(){
-        getGameWorld().addEntityFactory(new GameFactory());
-        spawn("background");
-        spawn("collision");
-//        setLevelFromMap("level1.tmx");
-//        var level = setLevelFromMap("tmx/level1.tmx");
-//        var map = new HashMap<String, Integer>();
-//        Level level =  getAssetLoader().loadLevel("tmx/level1.tmx", new TMXLevelLoader());
-//        getGameWorld().setLevel(level);
-//        map.put("h", 1);
-//        map.put("kjj", 2);
+        player = FXGL.entityBuilder()
+                .at(400,400)
+                .viewWithBBox("")
+                .scale(0.05, 0.05)
+                .with(new CollidableComponent(true))
+                .type(EntityTypes.PLAYER)
+                .buildAndAttach();
 
-//        player = null;
-//        Viewport viewport = getGameScene().getViewport();
-//        viewport.setBounds(-1500, 0, 250*70, getAppHeight());
-//        viewport.bindToEntity(player, getAppWidth() / 2, getAppHeight() /2);
-//        viewport.setLazy(true);
-
-
-
-        player = playerCreator.createEntity();
-
-        bossCreator = new Boss(0.75, 0.75);
-        boss = bossCreator.createEntity();
-
+        FXGL.entityBuilder()
+                .at(200, 200)
+                .viewWithBBox(new Circle(5, Color.BLACK))
+                .with(new CollidableComponent(true))
+                .type(EntityTypes.STAR)
+                .buildAndAttach();
     }
 
     @Override
@@ -81,20 +57,14 @@ public class Game extends GameApplication {
         FXGL.onKey(KeyCode.S,() -> {
             player.translateY(5);
         });
-        //TESTING PYPRPOSES
-        //TODO: HAAL WEG
-        FXGL.onKey(KeyCode.F,() -> {
-            System.out.println(playerCreator.getHP().getCurrentHP());
-        });
     }
 
      @Override
-     protected void initPhysics(){ //TODO: VERANDER 'BOSS' NAAR PROJECTILE
-        FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityTypes.PLAYER, EntityTypes.BOSS) {
+     protected void initPhysics(){
+        FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityTypes.PLAYER, EntityTypes.STAR) {
             @Override
-            protected void onCollision(Entity player, Entity bossProjectile) {
-//                FXGL.inc("hp", playerCreator.getsDamaged());
-                playerCreator.getHP().death(player);
+            protected void onCollision(Entity player, Entity star) {
+                star.removeFromWorld();
             }
         });
      }
@@ -102,18 +72,18 @@ public class Game extends GameApplication {
      @Override
      protected void initUI() {
         FXGL.getGameScene().setBackgroundColor(Color.DARKGREY);
-        javafx.scene.control.Label textje = new Label("health ding: ");
-        textje.setTranslateX(200);
-        textje.setTranslateY(200);
-        FXGL.getGameScene().addUINode(textje);
-        textje.textProperty().bind(FXGL.getWorldProperties().intProperty("hp").asString());
      }
 
      protected void initGameVars(Map<String, Object> vars){
-        vars.put("hp", playerCreator.getHP().getCurrentHP());
+//        vars.put();
      }
 
-    public static void main(String[] args){
-        launch(args);
+//    public static void main(String[] args){
+//        launch(args);
+//    }
+
+    @Override
+    public void run() {
+        Platform.runLater(this);
     }
 }

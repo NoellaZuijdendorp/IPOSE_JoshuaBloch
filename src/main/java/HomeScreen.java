@@ -1,4 +1,3 @@
-import com.almasb.fxgl.app.GameApplication;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
@@ -15,7 +14,9 @@ import java.io.FileNotFoundException;
 
 public class HomeScreen extends Application {
 
-        public void start(Stage homeScreen) throws FileNotFoundException {
+
+
+    public void start(Stage homeScreen) throws FileNotFoundException {
             homeScreen.setTitle("HSLEIDENTALE");
 
             ///Button New Game
@@ -71,6 +72,8 @@ public class HomeScreen extends Application {
                 @Override
                 public void handle(MouseEvent e) {
                     System.out.println("Knop highscore gedrukt");
+//                    Highscore highscore = new Highscore();
+//                    highscore.run();
                     Highscore highscore = new Highscore();
                     try {
                         highscore.start(homeScreen);
@@ -107,11 +110,10 @@ public class HomeScreen extends Application {
 
             homeScreen.setScene(sc);
             homeScreen.show();
-        }
+    }
 
     public static void main(String[] args)
     {
-        launch(args);
+        Application.launch(args);
     }
-
 }
