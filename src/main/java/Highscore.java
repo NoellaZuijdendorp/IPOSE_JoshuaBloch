@@ -5,6 +5,9 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.FileInputStream;
@@ -17,24 +20,17 @@ public class Highscore extends Application implements Runnable {
 
         GridPane schermHighscore = new GridPane();
 
-        for (String i : Login.getNames()){
-            Label label_highscore = new Label();
-            Label label_layout = new Label("------------------------------------");
-            label_highscore.setText(i);
+            Pane pane = new Pane();
 
-            label_highscore.setTranslateX(100);
-            label_layout.setTranslateX(100);
+            Text text = new Text("--------------------------------------------------------------------------");
 
-            int y_highscore = 150;
-            int y_layout = 160;
+            text.setTranslateY(60);
+            text.setTranslateX(210);
 
-            for (int m = 0; m < i.length(); m++) {
-                label_highscore.setTranslateY(y_highscore + 10);
-                label_layout.setTranslateY(y_layout + 10);
-            }
-            schermHighscore.add(label_highscore, 0, 2);
-            schermHighscore.add(label_layout, 0, 2);
-        }
+            pane.getChildren().add(text);
+
+            schermHighscore.add(text, 0, 2);
+            text.setFill(Color.WHITE);
 
         Image imageHigscore= new Image(new FileInputStream("target\\classes\\assets\\textures\\highscore.png"));
         ImageView imageViewHighscore = new ImageView(imageHigscore);
