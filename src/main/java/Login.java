@@ -14,6 +14,8 @@ import javafx.stage.Stage;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Login extends Application implements Runnable{
@@ -78,13 +80,23 @@ public class Login extends Application implements Runnable{
                     @Override
                     public void handle(MouseEvent e) {
                         System.out.println("Knop submit gedrukt");
-                        names.add(usernameField.getText());
-                        for (String i : names){
-                            System.out.println(i);
+//                        names.add(usernameField.getText());
+//                        for (String i : names){
+//                            System.out.println(i);
+//                        }
+                        String filename = "Leaderbord.txt";
+                        String textToAppend = usernameField.getText();
+
+                        try {
+                            FileWriter fw = new FileWriter(filename, true);
+                            fw.write(textToAppend + "\n" );
+                            fw.close();
+                            System.out.println("Text has been appended to the file.");
+                        } catch (IOException t) {
+                            System.out.println("An error occurred.");
+                            t.printStackTrace();
                         }
                         usernameField.clear();
-                        Game game = new Game();
-                        game.run();
                     }
                 };
 

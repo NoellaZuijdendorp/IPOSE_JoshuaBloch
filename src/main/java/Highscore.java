@@ -19,18 +19,32 @@ public class Highscore extends Application implements Runnable {
         highscore.setTitle("Highscore");
 
         GridPane schermHighscore = new GridPane();
+        Pane pane = new Pane();
 
-            Pane pane = new Pane();
+        Text text = new Text("--------------------------------------------------------------------------");
 
-            Text text = new Text("--------------------------------------------------------------------------");
 
-            text.setTranslateY(60);
-            text.setTranslateX(210);
+        text.setTranslateY(60);
+        text.setTranslateX(210);
 
-            pane.getChildren().add(text);
+        String filename = "Leaderbord.txt";
+        for (int i =0; i < filename.length(); i++){
+            Text names = new Text(filename.indent(i));
+            pane.getChildren().add(names);
+            schermHighscore.add(names, 0, 2);
+            names.setFill(Color.WHITE);
+            names.setTranslateX(210);
+//
+//            for(int m = 0; m < i; i++){
+//                names.setTranslateY(i + 70);
+//            }
+        }
 
-            schermHighscore.add(text, 0, 2);
-            text.setFill(Color.WHITE);
+        pane.getChildren().add(text);
+
+        schermHighscore.add(text, 0, 2);
+        text.setFill(Color.WHITE);
+
 
         Image imageHigscore= new Image(new FileInputStream("target\\classes\\assets\\textures\\highscore.png"));
         ImageView imageViewHighscore = new ImageView(imageHigscore);
