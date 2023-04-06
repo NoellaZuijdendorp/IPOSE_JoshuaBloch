@@ -2,6 +2,7 @@ import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
+import javafx.application.Platform;
 import javafx.geometry.Point2D;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
@@ -12,7 +13,7 @@ import javafx.scene.media.MediaPlayer;
 
 import java.io.File;
 
-public class Game extends GameApplication {
+public class Game extends GameApplication implements Runnable {
     private final int gameWidth = 800;
     private final int gameHeight = 800;
     private final String gameTitle = "HSLEIDENTALE";
@@ -101,5 +102,10 @@ public class Game extends GameApplication {
 
     public static void main(String[] args){
         launch(args);
+    }
+
+    @Override
+    public void run() {
+        Platform.runLater(this);
     }
 }
