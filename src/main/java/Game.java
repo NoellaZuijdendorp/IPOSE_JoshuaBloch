@@ -118,12 +118,12 @@ public class Game extends GameApplication {
         vars.put("hp", playerCreator.getHP().getCurrentHP());
      }
 
-    @Override
-    protected void onUpdate(double tpf) {
-        Point2D velocity = testProjectile.getObject("velocity");
-        testProjectile.translate(velocity);
-
-    }
+//    @Override
+//    protected void onUpdate(double tpf) {
+//        Point2D velocity = testProjectile.getObject("velocity");
+//        testProjectile.translate(velocity);
+//
+//    }
 
     public static void main(String[] args){
         launch(args);
