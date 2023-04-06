@@ -5,6 +5,9 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.FileInputStream;
@@ -16,27 +19,34 @@ public class Highscore extends Application implements Runnable {
         highscore.setTitle("Highscore");
 
         GridPane schermHighscore = new GridPane();
+        Pane pane = new Pane();
 
-        for (String i : Login.getNames()){
-            Label label_highscore = new Label();
-            Label label_layout = new Label("------------------------------------");
-            label_highscore.setText(i);
+        Text text = new Text("--------------------------------------------------------------------------");
 
-            label_highscore.setTranslateX(100);
-            label_layout.setTranslateX(100);
 
-            int y_highscore = 150;
-            int y_layout = 160;
+        text.setTranslateY(60);
+        text.setTranslateX(210);
 
-            for (int m = 0; m < i.length(); m++) {
-                label_highscore.setTranslateY(y_highscore + 10);
-                label_layout.setTranslateY(y_layout + 10);
-            }
-            schermHighscore.add(label_highscore, 0, 2);
-            schermHighscore.add(label_layout, 0, 2);
+        String filename = "Leaderbord.txt";
+        for (int i =0; i < filename.length(); i++){
+            Text names = new Text(filename.indent(i));
+            pane.getChildren().add(names);
+            schermHighscore.add(names, 0, 2);
+            names.setFill(Color.WHITE);
+            names.setTranslateX(210);
+//
+//            for(int m = 0; m < i; i++){
+//                names.setTranslateY(i + 70);
+//            }
         }
 
-        Image imageHigscore= new Image(new FileInputStream("C:\\Users\\nozu2\\OneDrive - Hogeschool Leiden\\Leerjaar 1\\Periode 3\\IPOSE\\highscore.png"));
+        pane.getChildren().add(text);
+
+        schermHighscore.add(text, 0, 2);
+        text.setFill(Color.WHITE);
+
+
+        Image imageHigscore= new Image(new FileInputStream("target\\classes\\assets\\textures\\highscore.png"));
         ImageView imageViewHighscore = new ImageView(imageHigscore);
         imageViewHighscore.setFitHeight(100);
         imageViewHighscore.setFitWidth(600);
