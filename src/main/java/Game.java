@@ -106,7 +106,7 @@ public class Game extends GameApplication {
 
      @Override
      protected void initUI() {
-        FXGL.getGameScene().setBackgroundColor(Color.DARKGREY);
+        FXGL.getGameScene().setBackgroundColor(Color.BLACK);
         javafx.scene.control.Label textje = new Label("health ding: ");
         textje.setTranslateX(200);
         textje.setTranslateY(200);

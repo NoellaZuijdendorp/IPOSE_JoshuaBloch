@@ -15,7 +15,7 @@ public class Player extends Character {
     public Entity createEntity() {
         entity = FXGL.entityBuilder()
                 .at(400, 500)
-                .viewWithBBox("")
+                .viewWithBBox("8-bit_blauw.png")
                 .scale(sizeScaleX, sizeScaleY)
                 .with(new CollidableComponent(true))
                 .type(EntityTypes.PLAYER)
