@@ -2,11 +2,8 @@ import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.components.CollidableComponent;
 
-public class Player extends Entity {
-    private Entity entityBuilder;
+public class Player extends Character {
     private HP hp;
-    private double sizeScaleX;
-    private double sizeScaleY;
     private long lastHitTime = 0;
 
     public Player(int maxHP ,double sizeScaleX, double sizeScaleY) {
@@ -15,25 +12,25 @@ public class Player extends Entity {
         this.sizeScaleY = sizeScaleY;
     }
 
-    public Entity createPlayer() {
-        entityBuilder = FXGL.entityBuilder()
+    public Entity createEntity() {
+        entity = FXGL.entityBuilder()
                 .at(400, 500)
                 .viewWithBBox("")
                 .scale(sizeScaleX, sizeScaleY)
                 .with(new CollidableComponent(true))
                 .type(EntityTypes.PLAYER)
                 .buildAndAttach();
-        return entityBuilder;
+        return entity;
     }
 
     public HP getHP() {
         return hp;
     }
 
-    public int getsDamaged() {
+    public int getsDamaged(Projectile projectile) {
         long currentTime = System.currentTimeMillis();
         int currentHP = getHP().getCurrentHP();
-        int damageValue = 0;
+        int damageValue = projectile.getDamage();
 
         if (currentTime - lastHitTime > 1000) {
             hp.setCurrentHP(currentHP - 1);
