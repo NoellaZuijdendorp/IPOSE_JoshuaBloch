@@ -21,7 +21,7 @@ public class HomeScreen extends Application implements Runnable{
         homeScreen.setTitle("HSLEIDENTALE");
 
         ///Button New Game
-        Image imageNewGame = new Image(new FileInputStream("C:\\Users\\nozu2\\OneDrive - Hogeschool Leiden\\Leerjaar 1\\Periode 3\\IPOSE\\newGame.png"));
+        Image imageNewGame = new Image(new FileInputStream("target\\classes\\assets\\textures\\newGame.png"));
         ImageView imageViewNewGame = new ImageView(imageNewGame);
         imageViewNewGame.setFitHeight(100);
         imageViewNewGame.setFitWidth(600);
@@ -53,7 +53,7 @@ public class HomeScreen extends Application implements Runnable{
         buttonHomeScreen_newgame.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandlerNewGame);
 
         ///Button Highscore
-        Image imageHigscore= new Image(new FileInputStream("C:\\Users\\nozu2\\OneDrive - Hogeschool Leiden\\Leerjaar 1\\Periode 3\\IPOSE\\highscore.png"));
+        Image imageHigscore= new Image(new FileInputStream("target\\classes\\assets\\textures\\highscore.png"));
         ImageView imageViewHighscore = new ImageView(imageHigscore);
         imageViewHighscore.setFitHeight(100);
         imageViewHighscore.setFitWidth(600);
@@ -96,7 +96,7 @@ public class HomeScreen extends Application implements Runnable{
         schermHomeScreen.getChildren().add(buttonHomeScreen_newgame);
 
         ///Image HSLEIDENTALE
-        Image image = new Image(new FileInputStream("C:\\Users\\nozu2\\OneDrive - Hogeschool Leiden\\Leerjaar 1\\Periode 3\\IPOSE\\HSLEIDENTALE_white.png"));
+        Image image = new Image(new FileInputStream("target\\classes\\assets\\textures\\HSLEIDENTALE_white.png"));
         ImageView imageView = new ImageView(image);
 
         imageView.setTranslateX(170);
@@ -117,4 +117,6 @@ public class HomeScreen extends Application implements Runnable{
     public void run() {
         Platform.runLater(this);
     }
+
 }
+

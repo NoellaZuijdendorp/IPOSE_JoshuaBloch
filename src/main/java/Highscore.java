@@ -36,7 +36,7 @@ public class Highscore extends Application implements Runnable {
             schermHighscore.add(label_layout, 0, 2);
         }
 
-        Image imageHigscore= new Image(new FileInputStream("C:\\Users\\nozu2\\OneDrive - Hogeschool Leiden\\Leerjaar 1\\Periode 3\\IPOSE\\highscore.png"));
+        Image imageHigscore= new Image(new FileInputStream("target\\classes\\assets\\textures\\highscore.png"));
         ImageView imageViewHighscore = new ImageView(imageHigscore);
         imageViewHighscore.setFitHeight(100);
         imageViewHighscore.setFitWidth(600);

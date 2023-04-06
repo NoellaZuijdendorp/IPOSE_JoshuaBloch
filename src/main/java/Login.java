@@ -24,7 +24,7 @@ public class Login extends Application implements Runnable{
     public void start(Stage login) throws FileNotFoundException {
         login.setTitle("Login");
 
-        Image imageUserName = new Image(new FileInputStream("C:\\Users\\nozu2\\OneDrive - Hogeschool Leiden\\Leerjaar 1\\Periode 3\\IPOSE\\enterUserName.png"));
+        Image imageUserName = new Image(new FileInputStream("target\\classes\\assets\\textures\\enterUserName.png"));
         ImageView imageViewUserName = new ImageView(imageUserName);
         imageViewUserName.setFitHeight(90);
         imageViewUserName.setFitWidth(550);
@@ -34,7 +34,7 @@ public class Login extends Application implements Runnable{
         label_userName.setTranslateX(20);
         label_userName.setTranslateY(-30);
 
-        Image imageLogin = new Image(new FileInputStream("C:\\Users\\nozu2\\OneDrive - Hogeschool Leiden\\Leerjaar 1\\Periode 3\\IPOSE\\submit.png"));
+        Image imageLogin = new Image(new FileInputStream("target\\classes\\assets\\textures\\submit.png"));
         ImageView imageViewLogin = new ImageView(imageLogin);
         imageViewLogin.setFitHeight(90);
         imageViewLogin.setFitWidth(400);
