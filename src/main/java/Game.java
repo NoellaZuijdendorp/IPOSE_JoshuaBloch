@@ -5,6 +5,7 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.level.Level;
 import com.almasb.fxgl.physics.CollisionHandler;
 import com.almasb.fxgl.physics.PhysicsComponent;
+import javafx.application.Platform;
 import javafx.geometry.Point2D;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
@@ -15,7 +16,7 @@ import java.util.Map;
 import static com.almasb.fxgl.dsl.FXGLForKtKt.getGameWorld;
 import static com.almasb.fxgl.dsl.FXGLForKtKt.spawn;
 
-public class Game extends GameApplication {
+public class Game extends GameApplication implements Runnable{
     private final int gameWidth = 800;
     private final int gameHeight = 800;
     private final String gameTitle = "HSLEIDENTALE";
@@ -127,5 +128,10 @@ public class Game extends GameApplication {
 
     public static void main(String[] args){
         launch(args);
+    }
+
+    @Override
+    public void run() {
+        Platform.runLater(this);
     }
 }
