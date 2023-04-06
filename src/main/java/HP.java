@@ -28,7 +28,7 @@ public class HP {
         if (currentHP <= 0) {
             character.removeFromWorld();
             //TODO: INSERT DEATH SCREEN
-            System.out.println("YOURE DEAD, not big suprise");
+            System.out.println("YOURE DEAD, no big suprise");
         }
     }
 }
